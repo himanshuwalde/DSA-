@@ -13,25 +13,49 @@
  *     }
  * }
  */
+
+// MORRIS TRAVERSAL (MODIFIED)
 class Solution {
     public void flatten(TreeNode root) {
-        if(root == null){
-            return;
+        TreeNode curr = root;
+        while(curr != null){
+            if(curr.left != null){
+                TreeNode pred = curr.left;
+                while(pred.right != null){
+                    pred = pred.right;
+                }
+                pred.right = curr.right;
+                curr.right = curr.left;
+                curr.left = null;
+                curr = curr.right;
+            }
+            else{
+                curr = curr.right;
+            }
         }
-        TreeNode left = root.left;
-        TreeNode right = root.right;
-        root.left = null;
-        root.right = null;
-        flatten(left);
-        flatten(right);
-        root.right = left;
-        TreeNode last = root;
-        while(last.right != null){
-            last = last.right;
-        }
-        last.right = right;
     }
 }
+
+// class Solution {
+//     public void flatten(TreeNode root) {
+//         if(root == null){
+//             return;
+//         }
+//         TreeNode left = root.left;
+//         TreeNode right = root.right;
+//         root.left = null;
+//         root.right = null;
+//         flatten(left);
+//         flatten(right);
+//         root.right = left;
+//         TreeNode last = root;
+//         while(last.right != null){
+//             last = last.right;
+//         }
+//         last.right = right;
+//     }
+// }
+
 // class Solution {
 // public static void flatten(Node root) {
     //     ArrayList<Node> arr = new ArrayList<>();
