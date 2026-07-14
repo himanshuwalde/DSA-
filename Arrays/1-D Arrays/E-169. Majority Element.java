@@ -1,5 +1,5 @@
 // MOORE'S VOTNG ALGORITHM
-class Solution {
+class Solution {    // TC: O(n)
     public int majorityElement(int[] nums) {
         int n = nums.length;
         int count = 0, ele = 0;
@@ -18,7 +18,7 @@ class Solution {
     }
 }
 
-// class Solution {
+// class Solution {    // TC: O(n*logn)
 //     public int majorityElement(int[] nums) {
 //         Arrays.sort(nums);
 //         int n = nums.length;
