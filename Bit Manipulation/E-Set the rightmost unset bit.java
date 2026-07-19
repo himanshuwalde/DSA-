@@ -1,10 +1,10 @@
-class Solution {
+class Solution {    TC: O(1)
     public int setBit(int n) {
         return n | (n+1);
     }
 }
 
-// class Solution {
+// class Solution {    TC: O(logn)
 //     public int setBit(int n) {
 //         for(int i=0; i<31; i++){
 //             if((n >> i)%2 == 0){
