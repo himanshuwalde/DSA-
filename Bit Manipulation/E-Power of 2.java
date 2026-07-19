@@ -3,15 +3,24 @@ class Solution {
         if(n == 0){
             return false;
         }
-        while(n > 1){
-            if(n%2 == 1){
-                return false;
-            }
-            n = n/2;
-        }
-        return true;
+        return ((n & (n-1)) == 0);
     }
 }
+
+// class Solution {
+//     public static boolean isPowerofTwo(int n) {
+//         if(n == 0){
+//             return false;
+//         }
+//         while(n > 1){
+//             if(n%2 == 1){
+//                 return false;
+//             }
+//             n = n/2;
+//         }
+//         return true;
+//     }
+// }
 
 // class Solution {
 //     public static boolean isPowerofTwo(int n) {
