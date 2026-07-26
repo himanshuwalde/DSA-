@@ -8,26 +8,25 @@ class Solution {
         }
         int low = 1;
         int high = max-min;
-        int ans = 0;
+        int maxDist = 0;
         Arrays.sort(arr);
         while(low <= high){
             int mid = low + (high - low)/2;
-            if(minDist(mid, arr, k)){
-                ans = mid;
-                low = mid + 1;
-                
+            if(setKCows(mid, arr, k)){
+                maxDist = mid;
+                low = mid + 1;  
             }
             else{
                 high = mid - 1;
             }
         }
-        return ans;
+        return maxDist;
     }
-    public boolean minDist(int dist, int[] arr, int k){
+    public boolean setKCows(int maxDist, int[] arr, int k){
         int prev = arr[0];
         k--;
         for(int i=1; i<arr.length; i++){
-            if(arr[i] - prev >= dist){
+            if(arr[i] - prev >= maxDist){
                 prev = arr[i];
                 k--;
             }
