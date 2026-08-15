@@ -1,7 +1,7 @@
 class Solution {
     public int maxProfit(int[] prices) {
         int n = prices.length;
-        int k = 2;
+        int k = 2;  // no. of transactions (buy & sell)
         int[][] dp = new int[n][k+1];
         for(int i=0; i<n; i++){
             Arrays.fill(dp[i], -1);
