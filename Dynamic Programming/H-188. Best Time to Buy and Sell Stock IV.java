@@ -1,4 +1,4 @@
-class Solution { // MEMOIZATION
+class Solution {    // MEMOIZATION
     public int maxProfit(int k, int[] prices) {
         int n = prices.length;
         k = k * 2;  // k transactions means 'k' times buy & sell, hence k *= 2
