@@ -1,4 +1,4 @@
-class Solution {
+class Solution {    // MEMOIZATION
     public int maxProfit(int[] prices) {
         int n = prices.length;
         int k = 2;  // no. of transactions (buy & sell)
@@ -17,14 +17,38 @@ class Solution {
         }
         if(k == 2){  // for buying
             int buy = helper(prices, n, i+1, k-1, dp) - prices[i];
-            int pass = helper(prices, n, i+1, k, dp);
-            dp[i][k] = Math.max(buy, pass);
+            int skip = helper(prices, n, i+1, k, dp);
+            dp[i][k] = Math.max(buy, skip);
         }
         else{  //for selling
             int sell = helper(prices, n, i+1, k-1, dp) + prices[i];
-            int pass = helper(prices, n, i+1, k, dp);
-            dp[i][k] = Math.max(sell, pass);
+            int skip = helper(prices, n, i+1, k, dp);
+            dp[i][k] = Math.max(sell, skip);
         }
         return dp[i][k];
     }
 }
+
+// class Solution {    // TABULATION
+//     public int maxProfit(int[] prices) {
+//         int n = prices.length;
+//         int[][] dp = new int[n + 1][3];
+//         for (int i = n - 1; i >= 0; i--) {
+//             for (int k = 1; k <= 2; k++) {
+//                 if (k == 2) {
+//                     // BUY
+//                     int buy = dp[i + 1][k - 1] - prices[i];
+//                     int skip = dp[i + 1][k];
+//                     dp[i][k] = Math.max(buy, skip);
+//                 } 
+//                 else {
+//                     // SELL
+//                     int sell = dp[i + 1][k - 1] + prices[i];
+//                     int skip = dp[i + 1][k];
+//                     dp[i][k] = Math.max(sell, skip);
+//                 }
+//             }
+//         }
+//         return dp[0][2];
+//     }
+// }
